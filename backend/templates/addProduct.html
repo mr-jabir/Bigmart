@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'prodSave' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<div class="form-group">
+                        <label for="exampleSelectGender">Category</label>
+                        <select class="form-control" id="exampleSelectGender" name="category">
+                            <option>select</option>
+                            {% for d in data %}
+                            <option>{{ d.Name }}</option>
+                          {% endfor %}
+                        </select>
+
+                      </div>
+<div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="name">
+                      </div>
+<div class="form-group">
+                        <label for="exampleInputName2">Price</label>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Price" name="price">
+                      </div>
+<div class="form-group">
+                        <label for="exampleInputName3">Quantiy</label>
+                        <input type="text" class="form-control" id="exampleInputName3" placeholder="Quantity"name="qty">
+                      </div>
+<div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"></textarea>
+                      </div>
+<div class="form-group">
+                        <label>Image</label>
+                        <div class="input-group col-xs-12">
+                          <input type="file" class="form-control file-upload-info"  placeholder="Upload Image" name="image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div>
+                      </div>
+<button onclick="alertfunction()" type="submit" class="btn btn-success">Submit</button>
+</form>
+<div>
+     <script>
+        function alertfunction(){
+            window.alert("Added successfully")
+        }
+    </script>
+</div>
+</body>
+</html>
+{% endblock %}
